@@ -627,7 +627,6 @@ input:checked+.slider:before {
         padding: 0;
         margin: 0;
     }
-
     .container {
         max-width: none;
         width: 100%;
@@ -638,7 +637,6 @@ input:checked+.slider:before {
         background-color: transparent;
         align-items: stretch;
     }
-
     .sidebar {
         width: 100%;
         height: 172px;
@@ -650,19 +648,15 @@ input:checked+.slider:before {
         border-radius: 0;
         flex-shrink: 0;
     }
-
     .sidebar-step {
         margin: 0 8px;
     }
-
     .sidebar-step:last-child {
         margin-right: 8px;
     }
-
     .step-info {
         display: none;
     }
-
     .content {
         flex: 1;
         padding: 0 16px 100px 16px;
@@ -671,13 +665,11 @@ input:checked+.slider:before {
         display: flex;
         flex-direction: column;
     }
-
     .content>div.wrapper {
         width: auto;
         height: auto;
         max-width: none;
     }
-
     .content>div.wrapper.active {
         display: block;
         background-color: var(--white);
@@ -689,7 +681,6 @@ input:checked+.slider:before {
         box-shadow: 0 25px 40px -20px rgba(0, 0, 0, 0.1);
         min-height: auto;
     }
-
     .form-actions {
         position: fixed;
         bottom: 0;
@@ -700,70 +691,60 @@ input:checked+.slider:before {
         margin: 0;
         z-index: 20;
     }
-
     .plan-options {
         flex-direction: column;
         gap: 12px;
     }
-
     .plan-card {
         display: flex;
         align-items: center;
         min-height: auto;
         padding: 16px;
     }
-
     .plan-card img {
         margin-bottom: 0;
         margin-right: 16px;
         width: 40px;
         height: 40px;
     }
-
     .plan-info {
         flex: 1;
     }
-
     h2.heading {
         font-size: 24px;
         margin-bottom: 8px;
     }
-
     .description {
         font-size: 16px;
         line-height: 1.5;
     }
-
     .form {
         margin-top: 24px;
         gap: 16px;
     }
-
     .billing-toggle {
         margin-top: 24px;
     }
-
     .addons-list {
         margin-top: 24px;
         gap: 12px;
     }
-
     .addon-checkbox {
         padding: 16px;
     }
-
     .summary-box {
         margin-top: 24px;
         margin-bottom: 16px;
         padding: 16px;
     }
-
     .total-summary {
         padding: 0 16px;
     }
-
     .thank-you-content {
         padding: 60px 20px;
         min-height: 300px;
+    }
+    .attribution {
+        display: none;
     }
 }
