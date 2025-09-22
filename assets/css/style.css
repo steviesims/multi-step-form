@@ -37,9 +37,184 @@
 
 body {
     font-family: "Ubuntu", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--blue-100);
+    font-weight: 400;
 }
 
-.attribution {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 940px;
+    border-radius: 16px;
+    background-color: var(--white);
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.sidebar {
+    flex-shrink: 0;
+    width: 250px;
+    background: url("../images/bg-sidebar-desktop.svg") no-repeat center center;
+    background-size: cover;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    padding: 32px;
+}
+
+.sidebar-step {
+    display: flex;
+    color: var(--white);
+    margin-bottom: 32px;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    border: 1px solid var(--white);
+}
+
+.active .step-number {
+    background-color: var(--blue-200);
+    border-color: var(--blue-200);
+    color: var(--blue-950)
+}
+
+.step-info {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.step-caption {
+    margin-bottom: 4px;
+}
+
+.step-title {
+    font-weight: 700;
+    color: var(--white);
+    font-size: 16px;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 48px 64px;
+}
+
+.content div {
+    width: 100%;
+    color: var(--blue-950);
+}
+
+h2.heading {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.description {
+    color: var(--grey-500);
+}
+
+.form {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    gap: 32px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-group label {
+    font-size: 16px;
+    color: var(--blue-950);
+}
+
+.form-group .error-message {
+    color: var(--red-500);
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.form-group input {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--grey-500);
+    font-size: 16px;
+    color: var(--blue-950);
+    transition: all 0.3s ease;
+}
+
+.form-group.invalid input {
+    border-color: var(--red-500) !important;
+}
+
+.form-group.invalid .error-message {
+    opacity: 1;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--purple-600);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.form-actions button {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--blue-950);
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-actions button:hover {
+    opacity: 0.8;
+}
+
+.form .attribution {
     font-size: 11px;
     text-align: center;
 }
