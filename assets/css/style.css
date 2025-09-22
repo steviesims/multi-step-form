@@ -89,6 +89,7 @@ body {
     align-items: center;
     font-weight: 500;
     border: 1px solid var(--white);
+    transition: all 0.3s ease;
 }
 
 .active .step-number {
@@ -121,9 +122,18 @@ body {
     padding: 48px 64px;
 }
 
-.content div {
-    width: 100%;
+.content>div.wrapper {
+    display: none;
+    width: 450px;
+    height: 380px;
     color: var(--blue-950);
+    flex-shrink: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.content>div.wrapper.active {
+    display: block;
 }
 
 h2.heading {
@@ -193,6 +203,7 @@ h2.heading {
 }
 
 .form-actions {
+    margin-top: 32px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -214,11 +225,475 @@ h2.heading {
     opacity: 0.8;
 }
 
-.form .attribution {
+.attribution {
+    margin-top: 40px;
     font-size: 11px;
     text-align: center;
 }
 
 .attribution a {
+    margin-top: 40px;
     color: hsl(228, 45%, 44%);
+}
+
+
+/* Step 2: Plan Selection Styles */
+
+.plan-options {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.plan-card {
+    flex: 1;
+    border: 1px solid var(--purple-200);
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 100px;
+}
+
+.plan-card:hover {
+    border-color: var(--purple-600);
+}
+
+.plan-card.selected {
+    border-color: var(--purple-600);
+    background-color: var(--blue-50);
+}
+
+.plan-card img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 16px;
+}
+
+.plan-info .plan-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--blue-950);
+    margin: 0 0 4px 0;
+}
+
+.plan-info .plan-price {
+    font-size: 14px;
+    color: var(--grey-500);
+    margin: 0 0 4px 0;
+}
+
+.plan-info .plan-yearly-discount {
+    font-size: 12px;
+    color: var(--blue-950);
+    margin: 0;
+    display: none;
+}
+
+.plan-card.yearly .plan-yearly-discount {
+    display: block;
+}
+
+.billing-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--blue-50);
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.billing-option {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--grey-500);
+    transition: color 0.3s ease;
+}
+
+.billing-option.active {
+    color: var(--blue-950);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 38px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--blue-950);
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider:before {
+    transform: translateX(18px);
+}
+
+
+/* Step 3: Add-ons Styles */
+
+.addons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.addon-item {
+    border: 1px solid var(--purple-200);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.addon-item:hover {
+    border-color: var(--purple-600);
+}
+
+.addon-item.selected {
+    border-color: var(--purple-600);
+    background-color: var(--blue-50);
+}
+
+.addon-checkbox {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.addon-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--purple-200);
+    border-radius: 4px;
+    margin-right: 20px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.addon-checkbox input[type="checkbox"]:checked+.checkmark {
+    background-color: var(--purple-600);
+    border-color: var(--purple-600);
+}
+
+.addon-checkbox input[type="checkbox"]:checked+.checkmark:after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.addon-info {
+    flex-grow: 1;
+}
+
+.addon-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--blue-950);
+    margin: 0 0 4px 0;
+}
+
+.addon-description {
+    font-size: 14px;
+    color: var(--grey-500);
+    margin: 0;
+}
+
+.addon-price {
+    font-size: 14px;
+    color: var(--purple-600);
+    font-weight: 400;
+}
+
+
+/* Step 4: Summary Styles */
+
+.summary-box {
+    background-color: var(--blue-50);
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 32px;
+    margin-bottom: 24px;
+}
+
+.selected-plan {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.plan-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.plan-name-summary {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--blue-950);
+    margin: 0;
+}
+
+.change-plan {
+    font-size: 14px;
+    color: var(--grey-500);
+    text-decoration: underline;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    align-self: flex-start;
+}
+
+.change-plan:hover {
+    color: var(--purple-600);
+}
+
+.plan-price-summary {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--blue-950);
+}
+
+.summary-divider {
+    border: none;
+    border-top: 1px solid var(--purple-200);
+    margin: 16px 0;
+}
+
+.selected-addons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.addon-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addon-name {
+    font-size: 14px;
+    color: var(--grey-500);
+}
+
+.addon-price-summary {
+    font-size: 14px;
+    color: var(--blue-950);
+}
+
+.total-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.total-label {
+    font-size: 14px;
+    color: var(--grey-500);
+}
+
+.total-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--purple-600);
+}
+
+
+/* Step 5: Thank You Styles */
+
+.thank-you-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.thank-you-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 24px;
+}
+
+.thank-you-message {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--grey-500);
+    max-width: 400px;
+    margin-top: 12px;
+}
+
+
+/* Form Actions Updates */
+
+.form-actions {
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.form-actions .go-back {
+    padding: 12px 0;
+    border: none;
+    background: none;
+    color: var(--grey-500);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.form-actions .go-back:hover {
+    color: var(--blue-950);
+}
+
+.form-actions .confirm {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--purple-600);
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-actions .confirm:hover {
+    opacity: 0.8;
+}
+
+.form-actions .next-step,
+.form-actions .confirm {
+    margin-left: auto;
+}
+
+
+/* Mobile Responsive Styles */
+
+@media (max-width: 768px) {
+    body {
+        background-color: var(--purple-200);
+    }
+    .container {
+        max-width: none;
+        width: 100%;
+        height: 100vh;
+        padding: 0;
+        border-radius: 0;
+        flex-direction: column;
+        background-color: transparent;
+    }
+    .sidebar {
+        width: 100%;
+        height: 172px;
+        background: url("../images/bg-sidebar-mobile.svg") no-repeat center center;
+        background-size: cover;
+        flex-direction: row;
+        justify-content: center;
+        padding: 32px 16px;
+        border-radius: 0;
+    }
+    .sidebar-step {
+        margin-bottom: 0;
+        margin-right: 16px;
+    }
+    .sidebar-step:last-child {
+        margin-right: 0;
+    }
+    .step-info {
+        display: none;
+    }
+    .content {
+        flex-grow: 1;
+        padding: 0 16px 100px 16px;
+        position: relative;
+        background-color: transparent;
+    }
+    .content>div.wrapper.active {
+        min-height: auto;
+        height: auto;
+        background-color: var(--white);
+        border-radius: 12px;
+        padding: 32px 24px;
+        margin-top: -64px;
+        position: relative;
+        z-index: 10;
+    }
+    .form-actions {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        padding: 16px;
+        box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+        z-index: 20;
+    }
+    .plan-options {
+        flex-direction: column;
+    }
+    .plan-card {
+        display: flex;
+        align-items: center;
+        min-height: auto;
+        padding: 16px;
+    }
+    .plan-card img {
+        margin-bottom: 0;
+        margin-right: 16px;
+    }
+    .thank-you-content {
+        padding: 60px 20px;
+    }
 }

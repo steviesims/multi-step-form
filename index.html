@@ -56,7 +56,9 @@
         <!-- Sidebar end -->
         <div class="content">
             <!-- Step 1 start -->
-            <div>
+
+            <!-- Step 1: Personal info -->
+            <div class="wrapper active">
                 <h2 class="heading">Personal info</h2>
                 <span class="description">Please provide your name, email address, and phone number.</span>
                 <form class="form">
@@ -81,13 +83,136 @@
                         </div>
                         <input type="tel" id="phone" placeholder="e.g. +1 234 567 890">
                     </div>
-
-                    <div class="form-actions">
-                        <button type="submit">Next Step</button>
-                    </div>
                 </form>
             </div>
 
+            <!-- Step 2: Select Plan -->
+            <div class="wrapper">
+                <h2 class="heading">Select your plan</h2>
+                <span class="description">You have the option of monthly or yearly billing.</span>
+                <div class="plan-options">
+                    <div class="plan-card" data-plan="arcade" data-price="9">
+                        <img src="./assets/images/icon-arcade.svg" alt="Arcade">
+                        <div class="plan-info">
+                            <h3 class="plan-name">Arcade</h3>
+                            <p class="plan-price">$9/mo</p>
+                            <p class="plan-yearly-discount">2 months free</p>
+                        </div>
+                    </div>
+                    <div class="plan-card" data-plan="advanced" data-price="12">
+                        <img src="./assets/images/icon-advanced.svg" alt="Advanced">
+                        <div class="plan-info">
+                            <h3 class="plan-name">Advanced</h3>
+                            <p class="plan-price">$12/mo</p>
+                            <p class="plan-yearly-discount">2 months free</p>
+                        </div>
+                    </div>
+                    <div class="plan-card" data-plan="pro" data-price="15">
+                        <img src="./assets/images/icon-pro.svg" alt="Pro">
+                        <div class="plan-info">
+                            <h3 class="plan-name">Pro</h3>
+                            <p class="plan-price">$15/mo</p>
+                            <p class="plan-yearly-discount">2 months free</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="billing-toggle">
+                    <span class="billing-option active">Monthly</span>
+                    <label class="switch">
+                        <input type="checkbox" id="billing-toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="billing-option">Yearly</span>
+                </div>
+            </div>
+
+            <!-- Step 3: Pick Add-ons -->
+            <div class="wrapper">
+                <h2 class="heading">Pick add-ons</h2>
+                <span class="description">Add-ons help enhance your gaming experience.</span>
+                <div class="addons-list">
+                    <div class="addon-item">
+                        <label class="addon-checkbox">
+                            <input type="checkbox" name="addons" value="online-service" data-price="1">
+                            <span class="checkmark"></span>
+                            <div class="addon-info">
+                                <h4 class="addon-title">Online service</h4>
+                                <p class="addon-description">Access to multiplayer games</p>
+                            </div>
+                            <span class="addon-price">+$1/mo</span>
+                        </label>
+                    </div>
+                    <div class="addon-item">
+                        <label class="addon-checkbox">
+                            <input type="checkbox" name="addons" value="larger-storage" data-price="2">
+                            <span class="checkmark"></span>
+                            <div class="addon-info">
+                                <h4 class="addon-title">Larger storage</h4>
+                                <p class="addon-description">Extra 1TB of cloud save</p>
+                            </div>
+                            <span class="addon-price">+$2/mo</span>
+                        </label>
+                    </div>
+                    <div class="addon-item">
+                        <label class="addon-checkbox">
+                            <input type="checkbox" name="addons" value="customizable-profile" data-price="2">
+                            <span class="checkmark"></span>
+                            <div class="addon-info">
+                                <h4 class="addon-title">Customizable profile</h4>
+                                <p class="addon-description">Custom theme on your profile</p>
+                            </div>
+                            <span class="addon-price">+$2/mo</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Summary -->
+            <div class="wrapper">
+                <h2 class="heading">Finishing up</h2>
+                <span class="description">Double-check everything looks OK before confirming.</span>
+                <div class="summary-box">
+                    <div class="selected-plan">
+                        <div class="plan-summary">
+                            <h4 class="plan-name-summary">Arcade (Monthly)</h4>
+                            <button class="change-plan">Change</button>
+                        </div>
+                        <span class="plan-price-summary">$9/mo</span>
+                    </div>
+                    <hr class="summary-divider">
+                    <div class="selected-addons">
+                        <div class="addon-summary">
+                            <span class="addon-name">Online service</span>
+                            <span class="addon-price-summary">+$1/mo</span>
+                        </div>
+                        <div class="addon-summary">
+                            <span class="addon-name">Larger storage</span>
+                            <span class="addon-price-summary">+$2/mo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="total-summary">
+                    <span class="total-label">Total (per month)</span>
+                    <span class="total-price">+$12/mo</span>
+                </div>
+            </div>
+
+            <!-- Step 5: Thank You -->
+            <div class="wrapper">
+                <div class="thank-you-content">
+                    <img src="./assets/images/icon-thank-you.svg" alt="Thank you" class="thank-you-icon">
+                    <h2 class="heading">Thank you!</h2>
+                    <p class="thank-you-message">
+                        Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="go-back" style="display: none;">Go Back</button>
+                <button type="button" class="next-step">Next Step</button>
+                <button type="button" class="confirm" style="display: none;">Confirm</button>
+            </div>
         </div>
     </div>
     <div class="attribution">
